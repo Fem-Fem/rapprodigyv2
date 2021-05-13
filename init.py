@@ -7,9 +7,13 @@ import lyricsgenius
 RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
 genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
 
-# artist = genius.search_artist("Cordae", max_songs=1, sort="title")
-album = genius.search_album("The Lost Boy", "Cordae")
+submitted_artist = input("Enter artist: ")
+submitted_album = input("Enter album")
+
+album = genius.search_album(submitted_album, submitted_artist)
 album.save_lyrics()
 
 for i in album.tracks:
     print(i.song.lyrics)
+
+
