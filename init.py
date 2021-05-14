@@ -1,13 +1,12 @@
 # NEXT STEPS
-# Ask user for artist and album/song
+# Incorporate os.path.exists
 
 
 # INSTALLATION STEPS
 # pip install jupyter
 # pip3 install jupyter --user
 
-
-# python -m notebook to open it
+# python -m notebook to open jupyter
 
 import os
 import lyricsgenius
