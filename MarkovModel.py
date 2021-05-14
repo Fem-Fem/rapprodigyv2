@@ -4,28 +4,27 @@
 # FUTURE
 # make markov model with multiple artist-albums?
 
-text = "Spit hot lava erode the beat"
-text = ["Spit", "hot", "lava", "erode", "the", "beat"]
-ngrams = {}
-order = 3
+class MarkovModel:
+  def __init__(self, text, order):
+    self.text = text
+    self.order = order
+    self.ngrams = {}
 
-def check_value_exist(text, current_index, order):
-  return text[current_index:current_index + order]
+  def check_value_exist(self, i, current_index):
+    return i[current_index:current_index + self.order]
 
-  # if (current_index + order - 1) < len(text):
-  #   return text[current_index:current_index + order]
-  # else:
-  #   return None
+  def setup_markov_list(self):
+    for i in self.text:
+      for index, value in enumerate(i):
+        if (index + self.order - 1) < len(i):
+          gram = self.check_value_exist(i, index)
+          if gram != None:
+            gram = ' '.join(gram) 
+            if gram in self.ngrams :
+              self.ngrams[gram] = self.ngrams[gram] + 1
+            else:
+              self.ngrams[gram] = 1
+      print(self.ngrams)
 
-for index, value in enumerate(text):
-  if (index + order - 1) < len(text):
-    gram = check_value_exist(text, index, order)
-    if gram != None:
-      gram = ' '.join(gram) 
-      if gram in ngrams :
-        ngrams[gram] = ngrams[gram] + 1
-      else:
-        ngrams[gram] = 1
-    print(gram)
-
-print(ngrams)
+  def print_ngrams(self):
+    print(self.ngrams)
