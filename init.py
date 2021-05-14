@@ -3,8 +3,7 @@
 
 # FUTURE
 # Incorporate Flask
-# Add unit tests
-# Incorporate NLP
+# Incorporate NLP - Textblob?
 
 import dash
 import dash_core_components as dcc
@@ -29,33 +28,33 @@ song.setup_markov_list()
 song.generate_markov_model()
 song.print_ngrams()
 
-# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-# app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-# app.layout = html.Div([
-#     html.H6("Change the artist and value for some fun!"),
-#     html.Div(["Artist: ",
-#               dcc.Input(id='artist', value='Cordae', type='text')]),
-#     html.Br(),
-#     html.Div(id='my-output'),
-#     html.Br(),
-#     html.Div(["Album: ",
-#             dcc.Input(id='album', value='The Lost Boy', type='text')]),
-#     html.Br(),
-#     html.Div(id='my-output2'),
-#     html.Br(),
-# ])
+app.layout = html.Div([
+    html.H6("Change the artist and value for some fun!"),
+    html.Div(["Artist: ",
+              dcc.Input(id='artist', value='Cordae', type='text')]),
+    html.Br(),
+    html.Div(id='my-output'),
+    html.Br(),
+    html.Div(["Album: ",
+            dcc.Input(id='album', value='The Lost Boy', type='text')]),
+    html.Br(),
+    html.Div(id='my-output2'),
+    html.Br(),
+])
 
-# @app.callback(
-#     Output(component_id='my-output', component_property='children'),
-#     Output(component_id='my-output2', component_property='children'),
-#     Input(component_id='artist', component_property='value'),
-#     Input(component_id='album', component_property='value'),
-# )
+@app.callback(
+    Output(component_id='my-output', component_property='children'),
+    Output(component_id='my-output2', component_property='children'),
+    Input(component_id='artist', component_property='value'),
+    Input(component_id='album', component_property='value'),
+)
 
-# def update_output_div(artist_value, album_value):
-#     return ['Output: {}'.format(artist_value), 'Output: {}'.format(album_value)]
+def update_output_div(artist_value, album_value):
+    return ['Output: {}'.format(song.generate_markov_model()), 'Output: {}'.format(album_value)]
 
-# if __name__ == '__main__':
-#     app.run_server(debug=True)
+if __name__ == '__main__':
+    app.run_server(debug=True)

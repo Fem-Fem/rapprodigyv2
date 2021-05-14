@@ -1,6 +1,4 @@
 # NEXT STEPS
-# Fix issue with setting up markov list - test integration step?
-# Finish markov model
 
 # FUTURE
 # make markov model with multiple artist-albums?
