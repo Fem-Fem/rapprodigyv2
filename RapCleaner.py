@@ -9,12 +9,19 @@ import re
 with open('Lyrics_TheLostBoy.json') as f:
   data = json.load(f)
 
-for i in data['tracks']:
-    string_being_cleaned = i['song']['lyrics']
-    number_of_question_marks = string_being_cleaned.count('?')
-    string_being_cleaned = re.sub('[.,?]', "", string_being_cleaned)
-    string_being_cleaned = re.sub('[\n]', " ", string_being_cleaned)
-    string_being_cleaned = re.sub('\[.+?\]\s', '', string_being_cleaned)
-    string_being_cleaned = string_being_cleaned.lower()
+cleaned_album_lyrics = []
 
+for i in data['tracks']:
+    song_track_lyrics_being_cleaned = i['song']['lyrics']
+    number_of_question_marks = song_track_lyrics_being_cleaned.count('?')
+    song_track_lyrics_being_cleaned = re.sub('[.,?]', "", song_track_lyrics_being_cleaned)
+    song_track_lyrics_being_cleaned = re.sub('[\n]', " ", song_track_lyrics_being_cleaned)
+    song_track_lyrics_being_cleaned = re.sub('\[.+?\]\s', '', song_track_lyrics_being_cleaned)
+    song_track_lyrics_being_cleaned = song_track_lyrics_being_cleaned.lower()
+    cleaned_album_lyrics.append(song_track_lyrics_being_cleaned)
+
+for i in cleaned_album_lyrics:
+    lyrics = i.split(" ")
+    print(string)
+    for i in string
     # print(i['song']['lyrics'].translate(str.maketrans({'\n': ' ', ',': '', '.': ''})).lower())
