@@ -7,5 +7,5 @@
 # Incorporate NLP
 
 import GetRap
-import MarkovModel
 import RapCleaner
+import MarkovModel

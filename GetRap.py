@@ -11,7 +11,6 @@
 
 import os
 import lyricsgenius
-import json
 # import code
 # code.interact(local=locals())
 
@@ -19,8 +18,10 @@ import json
 RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
 genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
 
-submitted_artist = input("Enter artist: ")
-submitted_album = input("Enter album: ")
+# submitted_artist = input("Enter artist: ")
+# submitted_album = input("Enter album: ")
+submitted_artist = "Cordae"
+submitted_album = "The Lost Boy"
 
 if not os.path.exists('Lyrics_' +submitted_album.replace(" ", "")+ ".json"):
     print("hi")
@@ -29,9 +30,3 @@ if not os.path.exists('Lyrics_' +submitted_album.replace(" ", "")+ ".json"):
 
 # for i in album.tracks:
 #     print(i.song.lyrics)
-
-
-with open('Lyrics_TheLostBoy.json') as f:
-  data = json.load(f)
-
-print(type(data['tracks']))
