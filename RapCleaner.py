@@ -17,9 +17,4 @@ for i in data['tracks']:
     string_being_cleaned = re.sub('\[.+?\]\s', '', string_being_cleaned)
     string_being_cleaned = string_being_cleaned.lower()
 
-    print(string_being_cleaned)
-    print(number_of_question_marks)
     # print(i['song']['lyrics'].translate(str.maketrans({'\n': ' ', ',': '', '.': ''})).lower())
-
-
-# print(type(data['tracks']))

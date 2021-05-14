@@ -24,9 +24,5 @@ submitted_artist = "Cordae"
 submitted_album = "The Lost Boy"
 
 if not os.path.exists('Lyrics_' +submitted_album.replace(" ", "")+ ".json"):
-    print("hi")
     album = genius.search_album(submitted_album, submitted_artist)
     album.save_lyrics()
-
-# for i in album.tracks:
-#     print(i.song.lyrics)
