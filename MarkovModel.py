@@ -24,7 +24,6 @@ class MarkovModel:
               self.ngrams[gram] = self.ngrams[gram] + 1
             else:
               self.ngrams[gram] = 1
-      print(self.ngrams)
 
   def print_ngrams(self):
     print(self.ngrams)

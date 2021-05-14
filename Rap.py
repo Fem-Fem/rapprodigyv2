@@ -7,6 +7,8 @@
 # INSTALLATION STEPS
 # pip install jupyter
 # pip3 install jupyter --user
+# pip install plotly==4.14.3
+# pip install dash --user
 
 # python -m notebook to open jupyter
 
@@ -14,6 +16,7 @@ import os
 import lyricsgenius
 import json
 import re
+
 # import code
 # code.interact(local=locals())
 
