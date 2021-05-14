@@ -1,8 +1,8 @@
 # NEXT STEPS
-# Store values somehow
+# Store values in GCP
+# Artist - Album - Song Name - Lyrics
 
 # FUTURE
-# Incorporate GCP
 
 # INSTALLATION STEPS
 # pip install jupyter
@@ -55,14 +55,15 @@ class Rap:
       song_track_lyrics_being_cleaned = i['song']['lyrics']
       self.number_of_question_marks = song_track_lyrics_being_cleaned.count('?')
       
-      song_track_lyrics_being_cleaned = re.sub('[.,?]', "", song_track_lyrics_being_cleaned)
+      song_track_lyrics_being_cleaned = re.sub('[.,?"\']', "", song_track_lyrics_being_cleaned)
       song_track_lyrics_being_cleaned = re.sub('[\n]', " ", song_track_lyrics_being_cleaned)
       song_track_lyrics_being_cleaned = re.sub('\[.+?\]\s', '', song_track_lyrics_being_cleaned)
       song_track_lyrics_being_cleaned = song_track_lyrics_being_cleaned.lower()
       self.cleaned_album_lyrics.append(song_track_lyrics_being_cleaned)
-
-  def remove_spaces(self):
-    self.cleaned_album_lyrics = [i.split(" ") for i in self.cleaned_album_lyrics]
+  
+  # uncomment for full words
+  # def remove_spaces(self):
+  #   self.cleaned_album_lyrics = [i.split(" ") for i in self.cleaned_album_lyrics]
 
   def get_cleaned_rap(self):
     return self.cleaned_album_lyrics
