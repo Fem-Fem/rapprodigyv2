@@ -43,6 +43,8 @@ class MarkovModel:
       current_gram = markov[-self.order:]
       i = i + 1
     # print(markov)
+    print("why")
+    print(markov)
     return markov
 
   def print_ngrams(self):

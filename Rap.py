@@ -1,6 +1,6 @@
 # NEXT STEPS
-# Store values in GCP
-# Artist - Album - Song Name - Lyrics
+# Store values in SQL
+# Artist - Album - - Lyrics
 
 # FUTURE
 
@@ -31,19 +31,16 @@ class Rap:
   def get_credentials(self):
     RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
     genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
+    self.genius = genius
 
-  def get_search_query(self):
-    # submitted_artist = input("Enter artist: ")
-    # submitted_album = input("Enter album: ")
-    submitted_artist = "Cordae"
-    submitted_album = "The Lost Boy"
-    self.artist = submitted_artist
-    self.album = submitted_album
-    self.directory = 'Lyrics_' +submitted_album.replace(" ", "")+ ".json"
+  def get_search_query(self, artist="Cordae", album="The Lost Boy"):
+    self.artist = artist
+    self.album = album
+    self.directory = 'Lyrics_' +album.replace(" ", "")+ ".json"
 
   def run_search_query(self):
     if not os.path.exists(self.directory):
-      album = genius.search_album(submitted_album, submitted_artist)
+      album = self.genius.search_album(self.album, self.artist)
       album.save_lyrics()
 
   def open_json_file(self):
