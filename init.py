@@ -5,6 +5,8 @@
 # FUTURE
 # Incorporate Flask
 # Incorporate NLP - Textblob?
+# Chart of words?
+# Compare two rappers to each other?
 
 import dash
 import dash_core_components as dcc
@@ -16,7 +18,6 @@ from Rap import Rap
 from MarkovModel import MarkovModel
 
 order = 6
-
 
 def run(artist_value, album_value):
     rap = Rap()
@@ -30,7 +31,6 @@ def run(artist_value, album_value):
         song = MarkovModel(rap.get_cleaned_rap(), order)
         song.setup_markov_list()
         return song.generate_markov_model()
-        # song.print_ngrams()
     return "Invalid!"
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
