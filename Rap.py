@@ -3,6 +3,11 @@
 # Artist - Album - - Lyrics
 
 # FUTURE
+# Length of words
+# question marks
+# words per album
+# most common words
+# number of unique words
 
 # INSTALLATION STEPS
 # pip install jupyter
