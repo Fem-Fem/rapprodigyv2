@@ -39,12 +39,16 @@ class Rap:
     self.directory = 'Lyrics_' +album.replace(" ", "")+ ".json"
 
   def run_search_query(self):
+    print(self.directory)
     if not os.path.exists(self.directory):
       album = self.genius.search_album(self.album, self.artist)
+      if album == None:
+        return False
       album.save_lyrics()
+    return True
 
   def open_json_file(self):
-    with open('Lyrics_TheLostBoy.json') as f:
+    with open(self.directory) as f:
       self.data = json.load(f)
 
   def remove_punctuation(self):    

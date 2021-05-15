@@ -17,7 +17,7 @@ class MarkovModel:
 # issue with this line
   def setup_markov_list(self):
     for i in self.text:
-      print(i)
+      # print(i)
       for index, value in enumerate(i):
         if (index + self.order) < len(i):
           gram = self.check_value_exists(i, index)
@@ -43,8 +43,6 @@ class MarkovModel:
       current_gram = markov[-self.order:]
       i = i + 1
     # print(markov)
-    print("why")
-    print(markov)
     return markov
 
   def print_ngrams(self):

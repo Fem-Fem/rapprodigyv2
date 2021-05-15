@@ -22,14 +22,16 @@ def run(artist_value, album_value):
     rap = Rap()
     rap.get_credentials()
     rap.get_search_query(artist_value, album_value)
-    rap.run_search_query()
-    rap.open_json_file()
-    rap.remove_punctuation()
+    valid_search_query = rap.run_search_query()
+    if valid_search_query:
+        rap.open_json_file()
+        rap.remove_punctuation()
 
-    song = MarkovModel(rap.get_cleaned_rap(), order)
-    song.setup_markov_list()
-    return song.generate_markov_model()
-    # song.print_ngrams()
+        song = MarkovModel(rap.get_cleaned_rap(), order)
+        song.setup_markov_list()
+        return song.generate_markov_model()
+        # song.print_ngrams()
+    return "Invalid!"
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -54,6 +56,8 @@ app.layout = html.Div([
 )
 
 def update_output_div(artist_value, album_value):
+    # print(artist_value)
+    # print(album_value)
     return 'Output: {}'.format(run(artist_value, album_value))
 
 if __name__ == '__main__':
