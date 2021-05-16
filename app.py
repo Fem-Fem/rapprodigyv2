@@ -10,7 +10,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import plotly.express as px
 import pandas as pd
 from Rap import Rap
@@ -40,10 +40,13 @@ server = app.server
 app.layout = html.Div([
     html.H6("Change the artist and value for some fun!"),
     html.Div(["Artist: ",
-              dcc.Input(id='artist', value='Cordae', type='text')]),
+              dcc.Input(id='artist', value='Cordae', type='text', debounce=True)]),
     html.Br(),
     html.Div(["Album: ",
-            dcc.Input(id='album', value='The Lost Boy', type='text')]),
+            dcc.Input(id='album', value='The Lost Boy', type='text', debounce=True)]),
+    html.Br(),
+    html.Button(id='submit', type='submit', children='Submit', n_clicks=0),
+    html.Br(),
     html.Br(),
     html.Div(id='my-output'),
     html.Br(),
@@ -51,13 +54,16 @@ app.layout = html.Div([
 
 @app.callback(
     Output(component_id='my-output', component_property='children'),
-    Input(component_id='artist', component_property='value'),
-    Input(component_id='album', component_property='value'),
+    [Input(component_id='submit', component_property='n_clicks')],
+    [State(component_id='artist', component_property='value'), 
+    State(component_id='album', component_property='value')]
 )
 
-def update_output_div(artist_value, album_value):
-    # print(artist_value)
-    # print(album_value)
+def update_output_div(submit, artist_value, album_value):
+    print(submit)
+    print(artist_value)
+    print(album_value)
+    # return "hi"
     return 'Output: {}'.format(run(artist_value, album_value))
 
 if __name__ == '__main__':
