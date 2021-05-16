@@ -38,6 +38,7 @@ class Rap:
     self.cleaned_album_lyrics = []
 
   def get_credentials(self):
+    ### EDIT THIS FOR HEROKU - ADD ACCESS TOKEN
     RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
     genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
     self.genius = genius
