@@ -3,7 +3,6 @@
 # LOL MAKE EVERYTHING NOT RERUN IF THE FIRST CHECK FAILS
 
 # FUTURE
-# Incorporate Flask
 # Incorporate NLP - Textblob?
 # Chart of words?
 # Compare two rappers to each other?
