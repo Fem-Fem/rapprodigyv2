@@ -14,6 +14,8 @@
 # pip3 install jupyter --user
 # pip install plotly==4.14.3
 # pip install dash --user
+# pip install lyricsgenius
+# pip install gunicorn
 
 # python -m notebook to open jupyter
 
