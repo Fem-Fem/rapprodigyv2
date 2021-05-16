@@ -25,6 +25,8 @@ import os
 import lyricsgenius
 import json
 import re
+from boto.s3.connection import S3Connection
+
 
 # import code
 # code.interact(local=locals())
@@ -39,8 +41,14 @@ class Rap:
 
   def get_credentials(self):
     ### EDIT THIS FOR HEROKU - ADD ACCESS TOKEN
-    RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
-    genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
+    # RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
+    # genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
+
+    s3 = S3Connection(os.environ['RAP_GENIUS_ACCESS_TOKEN'])
+
+    # RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
+    genius = lyricsgenius.Genius(s3)
+
     self.genius = genius
 
   def get_search_query(self, artist="Cordae", album="The Lost Boy"):
