@@ -17,6 +17,8 @@
 # pip install lyricsgenius
 # pip install gunicorn
 
+# pywin32==300
+
 # python -m notebook to open jupyter
 
 import os
