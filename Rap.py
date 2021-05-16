@@ -47,7 +47,7 @@ class Rap:
     # s3 = S3Connection(os.environ['RAP_GENIUS_ACCESS_TOKEN'])
 
     RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
-    genius = lyricsgenius.Genius(s3)
+    genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
 
     self.genius = genius
 
