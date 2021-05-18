@@ -25,8 +25,9 @@ import os
 import lyricsgenius
 import json
 import re
-# from boto.s3.connection import S3Connection
 
+#
+from textblob import TextBlob
 
 # import code
 # code.interact(local=locals())
@@ -38,14 +39,10 @@ class Rap:
     self.number_of_question_marks = 0
     self.directory = ''
     self.cleaned_album_lyrics = []
+    self.sentence_counter = 0
+    self.polarity = 0
 
   def get_credentials(self):
-    ### EDIT THIS FOR HEROKU - ADD ACCESS TOKEN
-    # RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
-    # genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
-
-    # s3 = S3Connection(os.environ['RAP_GENIUS_ACCESS_TOKEN'])
-
     RAP_GENIUS_ACCESS_TOKEN = os.environ.get('RAP_GENIUS_ACCESS_TOKEN')
     genius = lyricsgenius.Genius(RAP_GENIUS_ACCESS_TOKEN)
 
@@ -75,10 +72,12 @@ class Rap:
       self.number_of_question_marks = song_track_lyrics_being_cleaned.count('?')
       
       song_track_lyrics_being_cleaned = re.sub('[.,?"\']', "", song_track_lyrics_being_cleaned)
+      self.analyze_sentiment(song_track_lyrics_being_cleaned.split("\n"))
       song_track_lyrics_being_cleaned = re.sub('[\n]', " ", song_track_lyrics_being_cleaned)
       song_track_lyrics_being_cleaned = re.sub('\[.+?\]\s', '', song_track_lyrics_being_cleaned)
       song_track_lyrics_being_cleaned = song_track_lyrics_being_cleaned.lower()
       self.cleaned_album_lyrics.append(song_track_lyrics_being_cleaned)
+    # print(self.polarity)
   
   # uncomment for full words
   # def remove_spaces(self):
@@ -86,3 +85,11 @@ class Rap:
 
   def get_cleaned_rap(self):
     return self.cleaned_album_lyrics
+
+  def analyze_sentiment(self, sentence_list):
+    for i in sentence_list:
+      sentence_blob = TextBlob(i)
+      self.sentence_counter = self.sentence_counter + 1
+      self.polarity = (self.polarity + sentence_blob.sentiment.polarity) / self.sentence_counter
+      print(sentence_blob.sentiment)
+      print(self.polarity)
