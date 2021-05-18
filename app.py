@@ -4,7 +4,7 @@
 
 # FUTURE
 # Chart of words?
-# Compare two rappers to each other?
+# Compare two rappers to each other? Or overall, compare rappers?
 
 import dash
 import dash_core_components as dcc
