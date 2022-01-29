@@ -37,19 +37,37 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 app.layout = html.Div([
-    html.H6("Change the artist and value for some fun!"),
+    html.H6("Change the artist and album for some fun!", style={
+        'textAlign': 'center',
+    }),
+    html.Br(),
     html.Div(["Artist: ",
-              dcc.Input(id='artist', value='Cordae', type='text', debounce=True)]),
+              dcc.Input(id='artist', value='Cordae', type='text', debounce=True)], style={
+        'textAlign': 'center',
+    }),
     html.Br(),
     html.Div(["Album: ",
-            dcc.Input(id='album', value='The Lost Boy', type='text', debounce=True)]),
+            dcc.Input(id='album', value='The Lost Boy', type='text', debounce=True)], style={
+        'textAlign': 'center',
+    }),
     html.Br(),
-    html.Button(id='submit', type='submit', children='Submit', n_clicks=0),
+    html.Button(id='submit', type='submit', children='Submit', n_clicks=0, style={
+        'color': 'red',
+        'left': '50%;',
+    }),
     html.Br(),
     html.Br(),
-    html.Div(id='my-output'),
+    html.Div(id='my-output', style={
+        'textAlign': 'center',
+    }),
     html.Br(),
 ])
+
+    # html.Div(children='Dash: A web application framework for your data.', style={
+    #     'textAlign': 'center',
+    #     'color': colors['text']
+    # }),
+
 
 @app.callback(
     Output(component_id='my-output', component_property='children'),
